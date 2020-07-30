@@ -19,5 +19,7 @@ GA AUTO-TAGGER
 		var value		= "NULL";
 
 		$('footer a').autotagger(category, action, value);
-
+	
+	/***** INITIALIZE *****/
+		$('html').eventfire_ready();
 });
