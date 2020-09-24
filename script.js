@@ -2,8 +2,7 @@ $(document).ready(function() {
 
 /********************************************
 
-HOLY MOUNTAIN
-GA AUTO-TAGGER
+HOLY MOUNTAIN ANALYTICS
 
 NOTES:
 	Make sure you have all autotagger instances run before you 
@@ -18,7 +17,7 @@ NOTES:
 		var category		= "Nav";
 		var action			= "Click";
 		var value			= "";
-		var label_format	="";
+		var label_format	= "";
 
 		$('#nav a').autotagger(category, action, value, label_format);
 
