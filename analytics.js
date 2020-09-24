@@ -198,6 +198,7 @@ GA EVENTS - FORM SUBMISSIONS
 	
 ********************************************/
 $(document).ready(function() {
+	console.log(urlParams.has('GAEvent'));
 	//Check if GAEvent param exists
 	if (urlParams.has('GAEvent')) {
 
