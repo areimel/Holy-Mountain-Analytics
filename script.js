@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 /********************************************
 
+HOLY MOUNTAIN
 GA AUTO-TAGGER
 
 NOTES:
@@ -19,7 +20,7 @@ NOTES:
 		var value			= "";
 		var label_format	="";
 
-		$('nav a').autotagger(category, action, value, label_format);
+		$('#nav a').autotagger(category, action, value, label_format);
 
 	/***** FOOTER *****/
 		var category		= "Footer";
@@ -27,7 +28,7 @@ NOTES:
 		var value			= "";
 		var label_format	= "";
 
-		$('footer a').autotagger(category, action, value, label_format);
+		$('#footer a').autotagger(category, action, value, label_format);
 	
 	/***** INITIALIZE *****/
 		$('html').eventfire_ready();
