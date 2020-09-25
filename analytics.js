@@ -209,7 +209,7 @@ $(document).ready(function() {
 		//Check if ga_event param exists
 		if (urlParams.has('ga_event')) {
 
-			console.log("URL parameter-based ga event detected");
+			console.log("URL parameter-based ga event detected.");
 
 			//Set vars
 			var evCat = urlParams.get('ga_cat')	 	? urlParams.get('ga_cat') : '';
