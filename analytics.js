@@ -151,7 +151,7 @@ $(document).ready(function() {
 					//label grabber
 						if($(this).children().is('img')){
 							var label = $(this).attr('alt');
-						} else if($(this).text() == "") {
+						} else if($(this).attr('aria-label') != "") {
 							var label = $(this).attr('aria-label');
 						} else {
 							var label = $(this).text();
@@ -192,40 +192,52 @@ GA EVENTS - FORM SUBMISSIONS
 	event tag on the submit button, but this is specifically 
 	for after the form submits and the page refreshes.
 
+	var urlParams = new URLSearchParams(window.location.search);	//grab data
+	urlParams.has('parameter'); 		// check if parameter exists
+	urlParams.get('parameter'); 		// get value of parameter
 
-	urlParams.has('parameter'); 	// check if parameter exists
-	urlParams.get('parameter'); 	// get value of parameter
+	URL Parameter example:
+	?ga_event="true"&ga_cat="form"&ga_act="pageload"&ga_lab="form-success"&ga_val=""
 	
 ********************************************/
 $(document).ready(function() {
-	console.log(urlParams.has('GAEvent'));
-	//Check if GAEvent param exists
-	if (urlParams.has('GAEvent')) {
 
-		//Set vars
-		var evCat = $(this).attr('data-category') 	? $(this).attr('data-category') : '';
-		var evAct = $(this).attr('data-action') 		? $(this).attr('data-action') : '';
-		var evLab = $(this).attr('data-label') 		? $(this).attr('data-label') : '';
-		var evVal = $(this).attr('data-value') 		? $(this).attr('data-value') : '';
+	$.fn.url_param_tag = function() {
 
-		try {
-			//Fire event
-			window.dataLayer = window.dataLayer || [];
-			dataLayer.push({
-				'event': 			'GAEvent',
-				'eventCategory': 	evCat,
-				'eventAction': 		evAct,
-				'eventLabel': 		evLab,
-				'eventValue': 		evVal,
-			});
+		var urlParams = new URLSearchParams(window.location.search);
 
-			console.log("GA Event fired - Event Category: ["+evCat+"], Event Label: ["+evLab+"], Event Action: ["+evAct+"]");
+		//Check if ga_event param exists
+		if (urlParams.has('ga_event')) {
 
-		} catch (e) {
-			console.log("GA Event Error");
+			console.log("URL parameter-based ga event detected");
+
+			//Set vars
+			var evCat = urlParams.get('ga_cat')	 	? urlParams.get('ga_cat') : '';
+			var evAct = urlParams.get('ga_act') 		? urlParams.get('ga_act') : '';
+			var evLab = urlParams.get('ga_lab') 	? urlParams.get('ga_lab') : '';
+			var evVal = urlParams.get('ga_val')		? urlParams.get('ga_val') : '';
+
+			try {
+				//Fire event
+				window.dataLayer = window.dataLayer || [];
+				dataLayer.push({
+					'event': 			'ga_event',
+					'eventCategory': 	evCat,
+					'eventAction': 		evAct,
+					'eventLabel': 		evLab,
+					'eventValue': 		evVal,
+				});
+
+				console.log("GA Event fired - Event Category: ["+evCat+"], Event Label: ["+evLab+"], Event Action: ["+evAct+"]");
+
+			} catch (e) {
+				console.log("GA Event Error");
+			}
+
+		}else{
+			//do nothing
 		}
 
-	}else{
-		//do nothing
 	}
+
 });

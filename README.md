@@ -1,4 +1,5 @@
 # HOLY MOUNTAIN ANALYTICS
+## version 1.0
 
  Higher level analytics plugin for use with Google Tag Manager and Google Analytics.  
 

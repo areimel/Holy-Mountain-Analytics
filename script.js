@@ -13,22 +13,26 @@ NOTES:
 
 ********************************************/
 	
-	/***** NAV *****/
-		var category		= "Nav";
-		var action			= "Click";
-		var value			= "";
-		var label_format	= "";
+	/***** SET TAGS*****/
+		/***** NAV *****/
+			var category		= "Nav";
+			var action			= "Click";
+			var value			= "";
+			var label_format	= "";
 
-		$('#nav a').autotagger(category, action, value, label_format);
+			$('#nav a').autotagger(category, action, value, label_format);
 
-	/***** FOOTER *****/
-		var category		= "Footer";
-		var action			= "Click";
-		var value			= "";
-		var label_format	= "";
+		/***** FOOTER *****/
+			var category		= "Footer";
+			var action			= "Click";
+			var value			= "";
+			var label_format	= "";
 
-		$('#footer a').autotagger(category, action, value, label_format);
+			$('#footer a').autotagger(category, action, value, label_format);
 	
 	/***** INITIALIZE *****/
 		$('html').eventfire_ready();
+
+	/***** URL PARAMETER TAGS *****/
+		$('html').url_param_tag();
 });
