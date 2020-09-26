@@ -151,7 +151,7 @@ $(document).ready(function() {
 					//label grabber
 						if($(this).children().is('img')){
 							var label = $(this).attr('alt');
-						} else if($(this).attr('aria-label') != "") {
+						} else if($(this).text() == "") {
 							var label = $(this).attr('aria-label');
 						} else {
 							var label = $(this).text();
