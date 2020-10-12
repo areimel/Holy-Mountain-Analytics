@@ -30,7 +30,7 @@ NOTES:
 
 			$('#footer a').autotagger(category, action, value, label_format);
 	
-	/***** INITIALIZE *****/
+	/***** PRIME EVENT FIRING *****/
 		$('html').eventfire_ready();
 
 	/***** URL PARAMETER TAGS *****/
