@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 /********************************************
 
-USER ID COOKIE
+USER ID COOKIE  
 
 ********************************************/
 $(document).ready(function() {
