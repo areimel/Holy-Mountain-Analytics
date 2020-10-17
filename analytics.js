@@ -81,6 +81,44 @@ $(document).ready(function() {
 
 /********************************************
 
+USER ID COOKIE
+
+********************************************/
+$(document).ready(function() {
+
+
+	$.fn.uid_cookie = function(cname, cvalue, exdays){
+		 var d = new Date();
+		  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		  var expires = "expires="+ d.toUTCString();
+		  document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+
+		  console.log("user_id_cookie successful " + cname + "=" + cvalue + ";" + expires + ";");
+	};
+
+
+	var cookie_check = getCookie("hm_analytics_uid");
+	if(username != ""){
+		//
+
+	} else{
+		//set cookie
+		var uid_rand = Math.floor(Math.random() * 1000000);  
+
+		var cname = "hm_analytics_uid_daily";
+		var cvalue = "hm-d-" + uid_rand;
+		var exdays = 30;
+
+		$(document).uid_cookie(cname, cvalue, exdays);
+	}
+	
+
+});
+
+
+
+/********************************************
+
 GA EVENTS - MAIN 
 
 Example:
@@ -240,4 +278,19 @@ $(document).ready(function() {
 
 	}
 
+});
+
+
+
+
+/********************************************
+
+UTM EVENT
+
+EX: alecreimel.com?utm_source=test&utm_medium=test&utm_campaign=test&utm_term=test&utm_content=test
+	
+********************************************/
+
+$(document).ready(function(){
+	
 });
