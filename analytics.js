@@ -59,7 +59,7 @@ INITIALIZATION
 $(document).ready(function() {
 
 	//console log
-		console.log("---Holy Mountain Analytics initialized.---");
+		console.log("===== Holy Mountain Analytics initialized. =====");
 
 	//GTM detect - check for GTM script in <head>
 		var gtm_detect = 0;
@@ -71,9 +71,9 @@ $(document).ready(function() {
 		});
 
 		if(gtm_detect == 1){
-			console.log("GTM script detected.");
+			console.log("===== GTM script detected. =====");
 		} else {
-			console.log("No GTM script detected.  Double check GTM installation.");
+			console.log("===== No GTM script detected.  Double check GTM installation. =====");
 		}
 });
 
@@ -86,7 +86,7 @@ USER ID COOKIE
 ********************************************/
 $(document).ready(function() {
 
-
+/*
 	$.fn.uid_cookie = function(cname, cvalue, exdays){
 		 var d = new Date();
 		  d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -112,7 +112,7 @@ $(document).ready(function() {
 		$(document).uid_cookie(cname, cvalue, exdays);
 	}
 	
-
+*/
 });
 
 
@@ -135,7 +135,7 @@ $(document).ready(function(){
 
 	$.fn.eventfire_ready = function(){
 
-		console.log("Event Firing primed.  Ready for takeoff.");
+		console.log("===== Event Firing primed.  Ready for takeoff. =====");
 
 		$("[data-event='GAEvent']").click(function() {
 			//Set vars
@@ -223,7 +223,7 @@ $(document).ready(function() {
 
 /********************************************
 
-GA EVENTS - FORM SUBMISSIONS
+GA EVENTS - FORM SUBMISSIONS - WIP
 
 	- This block of code is for firing an event after a form 
 	has been successfully submitted.  There should be an 
@@ -247,7 +247,7 @@ $(document).ready(function() {
 		//Check if ga_event param exists
 		if (urlParams.has('ga_event')) {
 
-			console.log("URL parameter-based ga event detected.");
+			console.log("URL parameter-based GA Event detected.");
 
 			//Set vars
 			var evCat = urlParams.get('ga_cat')	 	? urlParams.get('ga_cat') : '';
@@ -281,13 +281,165 @@ $(document).ready(function() {
 });
 
 
+/********************************************
+
+UTM SESSION
+
+NOTES:
+	-	JS session closes when tab/browser is closed.
+	-	JS localstorage can be used for semi premanent storage
+
+code example:
+	
+	var searchParams = new URLSearchParams(window.location.search); //store as var
+	searchParams.has('sent'); //true/false
+
+UTM Parameter example:
+
+	https://website.com?utm_source=test&utm_medium=test&utm_campaign=test&utm_term=test&utm_content=test
+	
+********************************************/
+$(document).ready(function(){
+
+	var searchParams = new URLSearchParams(window.location.search); 
+
+	console.log("===== UTM Session initialized =====");
+
+	/***** Functions *****/
+
+		//Log new UTMs
+		$.fn.utm_log_param = function(utm_type, utm_val) {
+			console.log("UTM parameter detected.  Type: "+utm_type+", Value: "+utm_val);
+		};
+
+		//Log session UTMs
+		$.fn.utm_log_session = function(utm_type, utm_val) {
+			console.log("UTM session detected.  Type: "+utm_type+", Value: "+utm_val);
+		};
+
+		//Add UTM inputs to forms
+
+		var hm_utm_input_code='\
+		<style>\
+			.hm_utm_input_group{\
+				visibility:hidden;\
+				position:absolute;\
+				width:0px;\
+				height:0px;\
+				overflow:none;\
+				pointer-events:none;\
+			}\
+		</style\
+		\
+		<div class="hm_utm_input_group">\
+			<input type="hidden" name="utm_source" />\
+			<input type="hidden" name="utm_medium" />\
+			<input type="hidden" name="utm_campaign" />\
+			<input type="hidden" name="utm_term" />\
+			<input type="hidden" name="utm_content" />\
+		</div>\
+		'
+
+		$.fn.utm_form_add = function() {
+			$('form').each(function(){
+				if($(this).find('.hm_utm_input_group').legnth){
+					//.hm_utm_input_group exists, do nothing
+				}else{
+					$(this).prepend(hm_utm_input_code);
+					console.log("UTM form input group added");
+
+					//merged from separate value function
+					$(this).find('input[name="utm_source"]').val(sessionStorage.getItem("utm_source"));
+					$(this).find('input[name="utm_medium"]').val(sessionStorage.getItem("utm_medium"));
+					$(this).find('input[name="utm_campaign"]').val(sessionStorage.getItem("utm_campaign"));
+					$(this).find('input[name="utm_term"]').val(sessionStorage.getItem("utm_term"));
+					$(this).find('input[name="utm_content"]').val(sessionStorage.getItem("utm_content"));
+					console.log("UTM form inputs filled");
+				}
+			});
+		};
+
+		//Fill out UTM form inputs
+		/*
+		$.fn.utm_form_fill = function() {
+			$('form').each(function(){
+				if($(this).find('.hm_utm_input_group').legnth){
+					console.log("UTM form inputs filled");
+
+					$(this).find('input[name="utm_source"]').val(sessionStorage.getItem("utm_source"));
+					$(this).find('input[name="utm_medium"]').val(sessionStorage.getItem("utm_medium"));
+					$(this).find('input[name="utm_campaign"]').val(sessionStorage.getItem("utm_campaign"));
+					$(this).find('input[name="utm_term"]').val(sessionStorage.getItem("utm_term"));
+					$(this).find('input[name="utm_content"]').val(sessionStorage.getItem("utm_content"));
+
+					
+				}			
+			});
+		};
+		*/
+
+
+
+	/***** Store Vars *****/
+
+		//UTM SOURCE
+		if(searchParams.has('utm_source')) {
+			var utm_source = searchParams.get('utm_source');
+			sessionStorage.setItem("utm_source", utm_source);
+			$(this).utm_log("utm_source", sessionStorage.getItem("utm_source"));
+		}else if(sessionStorage.getItem("utm_source")){
+			$(this).utm_log_session("utm_source", sessionStorage.getItem("utm_source"));
+		}
+
+		//UTM MEDIUM
+		if(searchParams.has('utm_medium')) {
+			var utm_medium = searchParams.get('utm_medium');
+			sessionStorage.setItem("utm_medium", utm_medium);
+			$(this).utm_log("utm_medium", sessionStorage.getItem("utm_medium"));
+		}else if(sessionStorage.getItem("utm_medium")){
+			$(this).utm_log_session("utm_medium", sessionStorage.getItem("utm_medium"));
+		}
+
+		//UTM CAMPAIGN
+		if(searchParams.has('utm_campaign')) {
+			var utm_campaign = searchParams.get('utm_campaign');
+			sessionStorage.setItem("utm_campaign", utm_campaign);
+			$(this).utm_log("utm_campaign", sessionStorage.getItem("utm_campaign"));
+		}else if(sessionStorage.getItem("utm_campaign")){
+			$(this).utm_log_session("utm_campaign", sessionStorage.getItem("utm_campaign"));
+		}
+
+		//UTM TERM
+		if(searchParams.has('utm_term')) {
+			var utm_term = searchParams.get('utm_term');
+			sessionStorage.setItem("utm_term", utm_term);
+			$(this).utm_log("utm_term", sessionStorage.getItem("utm_term"));
+		}else if(sessionStorage.getItem("utm_term")){
+			$(this).utm_log_session("utm_term", sessionStorage.getItem("utm_term"));
+		}
+
+		//UTM CONTENT
+		if(searchParams.has('utm_content')) {
+			var utm_content = searchParams.get('utm_content');
+			sessionStorage.setItem("utm_content", utm_content);
+			$(this).utm_log("utm_content", sessionStorage.getItem("utm_content"));
+		}else if(sessionStorage.getItem("utm_content")){
+			$(this).utm_log_session("utm_content", sessionStorage.getItem("utm_content"));
+		}
+
+	/***** Fire Functions *****/
+
+		$('html').utm_form_add();
+});
+
 
 
 /********************************************
 
 UTM EVENT
 
-EX: alecreimel.com?utm_source=test&utm_medium=test&utm_campaign=test&utm_term=test&utm_content=test
+NOTES:
+	-	Use for logging UTM parameters as GA Events
 	
 ********************************************/
 
