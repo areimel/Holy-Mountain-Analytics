@@ -14,7 +14,7 @@ Holy Mountain - Analytics Plugin
 
 /********************************************
 
-PRE-FLIGHT CHECK
+PRE-FLIGHT CHECK - WIP
 
 ********************************************/
 
@@ -62,6 +62,7 @@ $(document).ready(function() {
 		console.log("===== Holy Mountain Analytics initialized. =====");
 
 	//GTM detect - check for GTM script in <head>
+		/*
 		var gtm_detect = 0;
 		$('script').each(function() {
 			if($(this).text("https://www.googletagmanager.com/gtm.js?id=")){
@@ -75,6 +76,7 @@ $(document).ready(function() {
 		} else {
 			console.log("===== No GTM script detected.  Double check GTM installation. =====");
 		}
+		*/
 });
 
 
