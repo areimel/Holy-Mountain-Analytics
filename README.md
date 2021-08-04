@@ -9,3 +9,6 @@
 
  ##Latest Features
  -UTM tracking and sessionization.  Plus automatically adding and filling out a set of UTM inputs in all forms.
+
+ ##Upcoming Features
+ -Middle click support, hover event support

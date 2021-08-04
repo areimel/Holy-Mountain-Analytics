@@ -34,7 +34,7 @@ if (typeof jQuery == 'undefined') {
         document.body.appendChild(script);
      }
      */
-
+/*
      // Get the first script element on the page
      var ref = w.document.getElementsByTagName( 'script' )[ 0 ];
 
@@ -46,14 +46,14 @@ if (typeof jQuery == 'undefined') {
 
      // Inject the script into the DOM
      ref.parentNode.insertBefore( script, ref );
-
+*/
 }
 
 
 
 /********************************************
 
-INITIALIZATION
+INITIALIZATION - WIP
 
 ********************************************/
 $(document).ready(function() {
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
 /********************************************
 
-USER ID COOKIE  
+USER ID COOKIE - WIP
 
 ********************************************/
 $(document).ready(function() {
