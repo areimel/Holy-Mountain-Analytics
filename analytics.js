@@ -361,7 +361,7 @@ $(document).ready(function(){
 			});
 		};
 
-		//Fill out UTM form inputs
+		//Fill out UTM form inputs - deprecated: merged into above code
 		/*
 		$.fn.utm_form_fill = function() {
 			$('form').each(function(){
