@@ -9,17 +9,114 @@ Holy Mountain - Analytics Plugin
 
 
 
+
+
+
 /********************************************
 
-INITIALIZATION
+PRE-FLIGHT CHECK - WIP
+
+********************************************/
+
+if (typeof jQuery == 'undefined') {
+
+    // jQuery IS NOT loaded, do stuff here.
+
+    /*
+    function loadjs() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js';
+        script.onload = function(){
+            alert("Script is ready!"); 
+            console.log(test.defult_id);
+        };
+        document.body.appendChild(script);
+     }
+     */
+/*
+     // Get the first script element on the page
+     var ref = w.document.getElementsByTagName( 'script' )[ 0 ];
+
+     // Create a new script element
+     var script = w.document.createElement( 'script' );
+
+     // Set the script element `src`
+     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.j';
+
+     // Inject the script into the DOM
+     ref.parentNode.insertBefore( script, ref );
+*/
+}
+
+
+
+/********************************************
+
+INITIALIZATION - WIP
 
 ********************************************/
 $(document).ready(function() {
 
 	//console log
-	console.log("===== Holy Mountain Analytics initialized. =====");
+		console.log("===== Holy Mountain Analytics initialized. =====");
 
+	//GTM detect - check for GTM script in <head>
+		/*
+		var gtm_detect = 0;
+		$('script').each(function() {
+			if($(this).text("https://www.googletagmanager.com/gtm.js?id=")){
+				gtm_detect = 1;
+				return false;
+			}
+		});
+
+		if(gtm_detect == 1){
+			console.log("===== GTM script detected. =====");
+		} else {
+			console.log("===== No GTM script detected.  Double check GTM installation. =====");
+		}
+		*/
 });
+
+
+
+/********************************************
+
+USER ID COOKIE - WIP
+
+********************************************/
+$(document).ready(function() {
+
+/*
+	$.fn.uid_cookie = function(cname, cvalue, exdays){
+		 var d = new Date();
+		  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		  var expires = "expires="+ d.toUTCString();
+		  document.cookie = cname + "=" + cvalue + ";" + expires + ";";
+
+		  console.log("user_id_cookie successful " + cname + "=" + cvalue + ";" + expires + ";");
+	};
+
+
+	var cookie_check = getCookie("hm_analytics_uid");
+	if(username != ""){
+		//
+
+	} else{
+		//set cookie
+		var uid_rand = Math.floor(Math.random() * 1000000);  
+
+		var cname = "hm_analytics_uid_daily";
+		var cvalue = "hm-d-" + uid_rand;
+		var exdays = 30;
+
+		$(document).uid_cookie(cname, cvalue, exdays);
+	}
+	
+*/
+});
+
 
 
 /********************************************
@@ -31,9 +128,8 @@ Example:
 data-event="GAEvent" data-category="Home" data-label="CTA" data-action="Click" data-value="undefined"
 
 - 	The above code should be pasted into the opening tag, 
-	as data-attributes, of whatever element you want to 
-	put a click event on.	 The below codes then grabs the 
-	data attributes you've set,	and pipes it through GTM and GA
+	as data-attributes, of whatever element you want to put a click event on.
+	The below codes then grabs the data attributes you've set,	and pipes it through GTM and GA
 
 ********************************************/
 $(document).ready(function(){
@@ -74,9 +170,6 @@ $(document).ready(function(){
 /********************************************
 
 GA AUTO-TAGGER - PROGRAMMATIC VERSION
-
-- 	Use this function to automatically set tags.  
-	Be sure to check your work.
 
 ********************************************/
 
@@ -268,7 +361,24 @@ $(document).ready(function(){
 			});
 		};
 
-		
+		//Fill out UTM form inputs - deprecated: merged into above code
+		/*
+		$.fn.utm_form_fill = function() {
+			$('form').each(function(){
+				if($(this).find('.hm_utm_input_group').legnth){
+					console.log("UTM form inputs filled");
+
+					$(this).find('input[name="utm_source"]').val(sessionStorage.getItem("utm_source"));
+					$(this).find('input[name="utm_medium"]').val(sessionStorage.getItem("utm_medium"));
+					$(this).find('input[name="utm_campaign"]').val(sessionStorage.getItem("utm_campaign"));
+					$(this).find('input[name="utm_term"]').val(sessionStorage.getItem("utm_term"));
+					$(this).find('input[name="utm_content"]').val(sessionStorage.getItem("utm_content"));
+
+					
+				}			
+			});
+		};
+		*/
 
 
 
