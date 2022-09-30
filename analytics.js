@@ -227,7 +227,6 @@ $(document).ready(function(){
 		};
 
 		//Add UTM inputs to forms
-
 		var hm_utm_input_code='\
 		<style>\
 			.hm_utm_input_group{\
@@ -252,7 +251,7 @@ $(document).ready(function(){
 		$.fn.utm_form_add = function() {
 			$('form').each(function(){
 				if($(this).find('.hm_utm_input_group').legnth){
-					//.hm_utm_input_group exists, do nothing
+					//.hm_utm_input_group already exists, do nothing
 				}else{
 					$(this).prepend(hm_utm_input_code);
 					console.log("UTM form input group added");
@@ -267,10 +266,6 @@ $(document).ready(function(){
 				}
 			});
 		};
-
-		
-
-
 
 	/***** Store Vars *****/
 
