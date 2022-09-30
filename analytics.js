@@ -273,7 +273,7 @@ $(document).ready(function(){
 		if(searchParams.has('utm_source')) {
 			var utm_source = searchParams.get('utm_source');
 			sessionStorage.setItem("utm_source", utm_source);
-			$(this).utm_log("utm_source", sessionStorage.getItem("utm_source"));
+			$(this).utm_log_param("utm_source", sessionStorage.getItem("utm_source"));
 		}else if(sessionStorage.getItem("utm_source")){
 			$(this).utm_log_session("utm_source", sessionStorage.getItem("utm_source"));
 		}
@@ -282,7 +282,7 @@ $(document).ready(function(){
 		if(searchParams.has('utm_medium')) {
 			var utm_medium = searchParams.get('utm_medium');
 			sessionStorage.setItem("utm_medium", utm_medium);
-			$(this).utm_log("utm_medium", sessionStorage.getItem("utm_medium"));
+			$(this).utm_log_param("utm_medium", sessionStorage.getItem("utm_medium"));
 		}else if(sessionStorage.getItem("utm_medium")){
 			$(this).utm_log_session("utm_medium", sessionStorage.getItem("utm_medium"));
 		}
@@ -291,7 +291,7 @@ $(document).ready(function(){
 		if(searchParams.has('utm_campaign')) {
 			var utm_campaign = searchParams.get('utm_campaign');
 			sessionStorage.setItem("utm_campaign", utm_campaign);
-			$(this).utm_log("utm_campaign", sessionStorage.getItem("utm_campaign"));
+			$(this).utm_log_param("utm_campaign", sessionStorage.getItem("utm_campaign"));
 		}else if(sessionStorage.getItem("utm_campaign")){
 			$(this).utm_log_session("utm_campaign", sessionStorage.getItem("utm_campaign"));
 		}
@@ -300,7 +300,7 @@ $(document).ready(function(){
 		if(searchParams.has('utm_term')) {
 			var utm_term = searchParams.get('utm_term');
 			sessionStorage.setItem("utm_term", utm_term);
-			$(this).utm_log("utm_term", sessionStorage.getItem("utm_term"));
+			$(this).utm_log_param("utm_term", sessionStorage.getItem("utm_term"));
 		}else if(sessionStorage.getItem("utm_term")){
 			$(this).utm_log_session("utm_term", sessionStorage.getItem("utm_term"));
 		}
@@ -309,7 +309,7 @@ $(document).ready(function(){
 		if(searchParams.has('utm_content')) {
 			var utm_content = searchParams.get('utm_content');
 			sessionStorage.setItem("utm_content", utm_content);
-			$(this).utm_log("utm_content", sessionStorage.getItem("utm_content"));
+			$(this).utm_log_param("utm_content", sessionStorage.getItem("utm_content"));
 		}else if(sessionStorage.getItem("utm_content")){
 			$(this).utm_log_session("utm_content", sessionStorage.getItem("utm_content"));
 		}
