@@ -10,6 +10,7 @@ NOTES:
 
 	Use label_format var to set custom label formatting.
 	Refer to main script for formatting example.
+	label_format is totally optional and used as an error-catcher.
 
 ********************************************/
 	
