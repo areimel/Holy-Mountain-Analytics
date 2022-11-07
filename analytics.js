@@ -159,20 +159,20 @@ $(document).ready(function() {
 			console.log("URL parameter-based GA Event detected.");
 
 			//Set vars
-			var evCat = urlParams.get('ga_cat')	 	? urlParams.get('ga_cat') : '';
-			var evAct = urlParams.get('ga_act') 		? urlParams.get('ga_act') : '';
+			var evCat = urlParams.get('ga_cat')	? urlParams.get('ga_cat') : '';
+			var evAct = urlParams.get('ga_act') 	? urlParams.get('ga_act') : '';
 			var evLab = urlParams.get('ga_lab') 	? urlParams.get('ga_lab') : '';
-			var evVal = urlParams.get('ga_val')		? urlParams.get('ga_val') : '';
+			var evVal = urlParams.get('ga_val')	? urlParams.get('ga_val') : '';
 
 			try {
 				//Fire event
 				window.dataLayer = window.dataLayer || [];
 				dataLayer.push({
-					'event': 			'ga_event',
+					'event': 					'ga_event',
 					'eventCategory': 	evCat,
 					'eventAction': 		evAct,
-					'eventLabel': 		evLab,
-					'eventValue': 		evVal,
+					'eventLabel': 			evLab,
+					'eventValue': 			evVal,
 				});
 
 				console.log("GA Event fired - Event Category: ["+evCat+"], Event Label: ["+evLab+"], Event Action: ["+evAct+"]");
@@ -332,4 +332,24 @@ NOTES:
 
 $(document).ready(function(){
 	
+});
+
+
+
+/********************************************
+
+HIGHLIGHT TAGGED ELEMENTS
+
+NOTES:
+	-	run highlightTags(); function to highlight all elements
+		with GA Event tags
+	
+********************************************/
+$(document).ready(function(){
+	$.fn.highlightTags = function() {
+		console.log("===== GA Event Elements Highlighted =====");
+		$("[data-event]").each(function(){
+			$(this).css("outline", "5px solid red");
+		});
+	};
 });
