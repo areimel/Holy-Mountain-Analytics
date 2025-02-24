@@ -341,7 +341,7 @@ $(document).ready(function(){
 HIGHLIGHT TAGGED ELEMENTS
 
 NOTES:
-	-	run highlightTags(); function to highlight all elements
+	-	run '$("html").highlightTags();' function to highlight all elements
 		with GA Event tags
 	
 ********************************************/
